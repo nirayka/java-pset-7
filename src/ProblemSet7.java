@@ -10,7 +10,14 @@ public class ProblemSet7 {
      * and last two characters of out.
      */
     public String surroundMe(String in, String out) {
-
+        if ((in == null) || (out == null) || (out.length() != 4)) {
+            return (in);
+        } else {
+            String firstTwo = out.substring(0,2);
+            String lastTwo = out.substring(2, 4);
+            String result = firstTwo + in + lastTwo;
+            return (result);
+        }
     }
 
     /*
@@ -20,7 +27,15 @@ public class ProblemSet7 {
      * and last n characters of text (overlapping, as needed).
      */
     public String endsMeet(String text, int n) {
-
+        if (text == null || (text.length() > 10 || text.length() < 1) || (n < 1 || n > text.length())) {
+            return text;
+        }
+        else {
+            String firstNChars = text.substring(0, n);
+            String lastNChars = text.substring(text.length() - n, text.length());
+            String finalString = firstNChars + lastNChars;
+            return finalString;
+        }
     }
 
     /*
@@ -29,7 +44,15 @@ public class ProblemSet7 {
      * Given a string, return a new string using the middle three characters of text.
      */
     public String middleMan(String text) {
-
+        if ((text == null) || (text.length() % 2 != 1) || (text.length() < 3)) {
+            return text;
+        } else {
+            int length = text.length();
+            double doubledCenter = Math.ceil(length / 2);
+            int center = (int) doubledCenter;
+            String finalString = text.substring(center - 2, center + 1);
+            return (finalString);
+        }
     }
 
     /*
@@ -39,7 +62,19 @@ public class ProblemSet7 {
      * three characters of text.
      */
     public boolean isCentered(String text, String target) {
-
+        if ((text == null) || (text.length() % 2 != 1) || (text.length() < 3) || (target != null) || (target.length() != 3)) {
+            return (false);
+        } else {
+            int length = text.length();
+            double doubledCenter = Math.ceil(length / 2);
+            int center = (int) doubledCenter;
+            String comparativeString = text.substring(center - 2, center + 1);
+            if (comparativeString.equals(target)) {
+                return (true);
+            } else {
+                return (false);
+            }
+        }
     }
 
     /*
@@ -48,7 +83,7 @@ public class ProblemSet7 {
      * Given a string and a character, compute the number of words that end in suffix.
      */
     public int countMe(String text, char suffix) {
-
+        
     }
 
     /*
