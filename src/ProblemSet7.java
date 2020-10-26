@@ -83,7 +83,17 @@ public class ProblemSet7 {
      * Given a string and a character, compute the number of words that end in suffix.
      */
     public int countMe(String text, char suffix) {
-        
+        if(text == null || !Character.isLetter(suffix)){
+            return -1;
+        }
+        int count = 0;
+        String[] arr = text.split(" ");
+        for(String i : arr){
+            if(i.charAt(i.length()-1) == suffix){
+                count++;
+            }
+        }
+        return count;
     }
 
     /*
@@ -92,7 +102,16 @@ public class ProblemSet7 {
      * Given a string, compute the number of triplets in text.
      */
     public int triplets(String text) {
-
+        if(text == null){
+            return -1;
+        }
+        int tripCount = 0;
+        for(int i = 0; i < text.length()-1; i++){
+            if(text.charAt(i) == text.charAt(i+1) && text.charAt(i) == text.charAt(i+2)){
+                tripCount++;
+            }
+        }
+        return tripCount;
     }
 
     /*
@@ -101,7 +120,17 @@ public class ProblemSet7 {
      * Given a string, compute the sum of the digits in text.
      */
     public long addMe(String text) {
-
+        if(text == null){
+            return -1;
+        }
+        long sum = 0;
+        for(int i = 0; i < text.length(); i++){
+            char dig = text.charAt(i);
+            if(Character.isDigit(dig)){
+                sum += Integer.parseInt(Character.toString(dig));
+            }
+        }
+        return sum;
     }
 
     /*
@@ -110,7 +139,32 @@ public class ProblemSet7 {
      * Given a string, compute the length of the longest sequence.
      */
     public long sequence(String text) {
-
+        if(text == null){
+            return -1;
+        }
+        int length = text.length();
+        boolean end = true;
+        long count = 0;
+        for(int i = 0; i < length; i++){
+            char current = text.charAt(i);
+            if(i < length - 1){
+                if(current == text.charAt((i+1)) && end){
+                    end = false;
+                }
+                if(i > 0){
+                    if(current == text.charAt(i - 1) && current != text.charAt(i+1)){
+                        end = true;
+                        count ++;
+                    }
+                }
+            }else if(i == length - 1){
+                if(current == text.charAt((i-1))){
+                    end = true;
+                    count ++;
+                }
+            }
+        }
+        return count;
     }
 
     /*
@@ -120,7 +174,24 @@ public class ProblemSet7 {
      * characters of a and b.
      */
     public String intertwine(String a, String b) {
-
+        String intertwine = "";
+        int alength = a.length();
+        int blength = b.length();
+        int length = 0;
+        if(alength >= blength){
+            length = alength;
+        }else if (blength > alength){
+            length = blength;
+        }
+        for(int i = 0; i < length; i++){
+            if(i < alength){
+                intertwine+=Character.toString(a.charAt(i));
+            }
+            if(i < blength){
+                intertwine+=Character.toString(b.charAt(i));
+            }
+        }
+        return intertwine;
     }
 
     /*
@@ -129,6 +200,17 @@ public class ProblemSet7 {
      * Given a string, determine whether or not it is a palindrome.
      */
     public boolean isPalindrome(String text) {
-
+        if (text == null) {
+            return false;
+        }
+        String reverseText = "";
+        for (int i = text.length() - 1; i >= 0; i--) {
+            reverseText += Character.toString(text.charAt(i));
+        }
+        if (reverseText.equals(text)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
