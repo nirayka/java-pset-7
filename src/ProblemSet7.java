@@ -32,7 +32,7 @@ public class ProblemSet7 {
         }
         else {
             String firstNChars = text.substring(0, n);
-            String lastNChars = text.substring(text.length() - n, text.length());
+            String lastNChars = text.substring(text.length() - n);
             String finalString = firstNChars + lastNChars;
             return finalString;
         }
@@ -47,11 +47,11 @@ public class ProblemSet7 {
         if ((text == null) || (text.length() % 2 != 1) || (text.length() < 3)) {
             return text;
         } else {
-            int length = text.length();
+            double length = text.length();
             double doubledCenter = Math.ceil(length / 2);
             int center = (int) doubledCenter;
             String finalString = text.substring(center - 2, center + 1);
-            return (finalString);
+            return finalString;
         }
     }
 
@@ -62,10 +62,10 @@ public class ProblemSet7 {
      * three characters of text.
      */
     public boolean isCentered(String text, String target) {
-        if ((text == null) || (text.length() % 2 != 1) || (text.length() < 3) || (target != null) || (target.length() != 3)) {
+        if ((text == null) || (text.length() % 2 != 1) || (text.length() < 3) || (target == null) || (target.length() != 3)) {
             return (false);
         } else {
-            int length = text.length();
+            double length = text.length();
             double doubledCenter = Math.ceil(length / 2);
             int center = (int) doubledCenter;
             String comparativeString = text.substring(center - 2, center + 1);
@@ -82,14 +82,14 @@ public class ProblemSet7 {
      *
      * Given a string and a character, compute the number of words that end in suffix.
      */
-    public int countMe(String text, char suffix) {
-        if(text == null || !Character.isLetter(suffix)){
+    public static int countMe(String text, char suffix) {
+        if (text == null || !Character.isLetter(suffix)) {
             return -1;
         }
         int count = 0;
         String[] arr = text.split(" ");
-        for(String i : arr){
-            if(i.charAt(i.length()-1) == suffix){
+        for (String i : arr) {
+            if (i.charAt(i.length()-1) == suffix) {
                 count++;
             }
         }
@@ -101,13 +101,13 @@ public class ProblemSet7 {
      *
      * Given a string, compute the number of triplets in text.
      */
-    public int triplets(String text) {
-        if(text == null){
+    public static int triplets(String text) {
+        if (text == null) {
             return -1;
         }
         int tripCount = 0;
-        for(int i = 0; i < text.length()-1; i++){
-            if(text.charAt(i) == text.charAt(i+1) && text.charAt(i) == text.charAt(i+2)){
+        for (int i = 0; i < text.length()-1; i++) {
+            if (text.charAt(i) == text.charAt(i+1) && text.charAt(i) == text.charAt(i+2)) {
                 tripCount++;
             }
         }
@@ -119,14 +119,14 @@ public class ProblemSet7 {
      *
      * Given a string, compute the sum of the digits in text.
      */
-    public long addMe(String text) {
-        if(text == null){
+    public static long addMe(String text) {
+        if (text == null) {
             return -1;
         }
         long sum = 0;
-        for(int i = 0; i < text.length(); i++){
+        for (int i = 0; i < text.length(); i++) {
             char dig = text.charAt(i);
-            if(Character.isDigit(dig)){
+            if (Character.isDigit(dig)) {
                 sum += Integer.parseInt(Character.toString(dig));
             }
         }
@@ -138,27 +138,27 @@ public class ProblemSet7 {
      *
      * Given a string, compute the length of the longest sequence.
      */
-    public long sequence(String text) {
-        if(text == null){
+    public static long sequence(String text) {
+        if (text == null) {
             return -1;
         }
         int length = text.length();
         boolean end = true;
         long count = 0;
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             char current = text.charAt(i);
-            if(i < length - 1){
-                if(current == text.charAt((i+1)) && end){
+            if (i < length - 1) {
+                if (current == text.charAt((i+1)) && end) {
                     end = false;
                 }
-                if(i > 0){
+                if (i > 0) {
                     if(current == text.charAt(i - 1) && current != text.charAt(i+1)){
                         end = true;
                         count ++;
                     }
                 }
-            }else if(i == length - 1){
-                if(current == text.charAt((i-1))){
+            } else if (i == length - 1) {
+                if (current == text.charAt((i-1))) {
                     end = true;
                     count ++;
                 }
@@ -173,21 +173,21 @@ public class ProblemSet7 {
      * Given two strings, return a new string built by intertwining each of the
      * characters of a and b.
      */
-    public String intertwine(String a, String b) {
+    public static String intertwine(String a, String b) {
         String intertwine = "";
         int alength = a.length();
         int blength = b.length();
-        int length = 0;
-        if(alength >= blength){
+        int length;
+        if (alength >= blength) {
             length = alength;
-        }else if (blength > alength){
+        }else {
             length = blength;
         }
-        for(int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             if(i < alength){
                 intertwine+=Character.toString(a.charAt(i));
             }
-            if(i < blength){
+            if (i < blength) {
                 intertwine+=Character.toString(b.charAt(i));
             }
         }
@@ -199,7 +199,7 @@ public class ProblemSet7 {
      *
      * Given a string, determine whether or not it is a palindrome.
      */
-    public boolean isPalindrome(String text) {
+    public static boolean isPalindrome(String text) {
         if (text == null) {
             return false;
         }
@@ -209,7 +209,7 @@ public class ProblemSet7 {
         }
         if (reverseText.equals(text)) {
             return true;
-        } else {
+        }else{
             return false;
         }
     }
